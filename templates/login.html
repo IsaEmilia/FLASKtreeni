@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>Login</title>
+{% endblock %}
+
+{% block body %}
+<h1>LOG IN</h1>
+<h2>No account? In that case</h2>
+<button class="headbutt">
+    <a href="{{ url_for('register')}}">Register</a>
+    <button class="headbutt">
+        <a href="{{ url_for('index')}}">Main</a>
+    </button>
+</button>
+{% endblock %}
+
+

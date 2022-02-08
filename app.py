@@ -1,11 +1,16 @@
-from flask import Flask, redirect, render_template, url_for, request, redirect, LoginManager
+from flask import Flask, redirect, render_template, url_for, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+
 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
+
+
+
+app.secret_key = ''
 
 
 class Todo(db.Model):
@@ -15,6 +20,45 @@ class Todo(db.Model):
 
     def __repr__(self):
         return '<Task %r>' % self.id
+
+#login ?
+
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+        return render_template('login.html')
+
+
+
+@app.route('/register', methods=['GET','POST'])
+def register():
+        return render_template('register.html')
+
+
+
+@app.route('/logout')
+def logout():
+    # remove the username from the session if it's there
+    session.pop('username', None)
+    return redirect(url_for('index'))
+
+
+    
+
+#login_manager = LoginManager()
+#login_manager.init_app(app)
+
+#@login_manager.user_loader
+#def load_user(user_id):
+#    return User.get(user_id)
+
+
+
+#class User(db.Document):
+#    name = db.StringField()
+
+
+
 
 # code for adding new entries
 @app.route('/', methods=['POST', 'GET'])
@@ -66,19 +110,7 @@ def update(id):
         return render_template('update.html', task=task)
 
 
-# code for log-in shenanigans
 
-@app.route('/login', methods=['GET','POST'])
-def login():
-    return ''
-
-
-
-#login_manager = LoginManager()
-
-#@login_manager.user_loader
-#def load_user(user_id):
-#    return User.get(user_id)
 
 
 
