@@ -6,38 +6,44 @@
 
 
 {% block body %}
-<div class="header">
-    <button id="headbutt">&#9996;</button>
-    <h2>tähän headeri asioita :)</h2>
-</div>
-<div class="content">
-    <h1>To Do</h1>
-    <table>
-        <tr>
-            <th>Task</th>
-            <th>Added</th>
-            <th>Actions</th>
-        </tr>
-        {% for task in tasks %}
-            <tr>
-                <td>{{ task.content }}</td>
-                <td>{{ task.date_created.date() }}</td>
-                <td class="buttons">
-                    <a href="/delete/{{task.id}}">&#10008;</a>
-                    <br>
-                    <a href="">&#10000;</a>
-
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    <br>
-    <div class="form">
-        <form action="/"method="POST">
-            <input type="text" name="content" id="content">
-            <input id="submit" type="submit" value="&#10004;">
-        </form>
+<div class="page">
+    <div class="header">
+        <button id="headbutt">&#9996;</button>
+        <h2>tähän headeri asioita :)</h2>
     </div>
+    <div class="content">
+        <h1>To Do</h1>
+        {% if tasks|length < 1 %}
+        <h4>*crickets*</h4>
+        {% else %}
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Added</th>
+                <th>Actions</th>
+            </tr>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.content }}</td>
+                    <td>{{ task.date_created.date() }}</td>
+                    <td class="buttons">
+                        <a href="/delete/{{task.id}}">&#10008;</a>
+                        <br>
+                        <a href="/update/{{task.id}}">&#10000;</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        <br>
+        <div class="form">
+            <form action="/"method="POST">
+                <input type="text" name="content" id="content">
+                <input id="submit" type="submit" value="&#10004;">
+            </form>
+        </div>
+</div>
 
 
 </div>
