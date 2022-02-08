@@ -9,7 +9,6 @@ from flask_bcrypt import Bcrypt
 
 
 
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
@@ -19,6 +18,10 @@ app.config['SECRET_KEY'] = 'notimportant'
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
+@login_manager.user_loader
+def load_user(id):
+    return User.get(id)
 
 
 
@@ -60,25 +63,21 @@ class LoginForm(FlaskForm):
         min=5, max=20)], render_kw={"placeholder": "password"})    
 
     submit = SubmitField("Login")
+ 
 
-    def validate_username(self, username):
-        existing_user_name = User.query.filter_by(
-            username=username.data).first()
-        if existing_user_name:
-            raise ValidationError(
-                "That name is in use."
-            )    
-
-
-    
 
 # login routing and form shenanigans
 
 @app.route('/login', methods=['GET','POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user:
+            if bcrypt.check_password_hash(user.password, form.password.data):
+                login_user(user)
+                return redirect(url_for('dashboard'))
     return render_template('login.html', form=form)
-
 
 
 @app.route('/register', methods=['GET','POST'])
@@ -94,11 +93,16 @@ def register():
     return render_template('register.html', form=form)
 
 
+@app.route('/dashboard', methods=['GET','POST'])
+@login_required
+def dashboard():
+    return render_template('dashboard.html')
 
-@app.route('/logout')
+
+@app.route('/logout', methods=['GET','POST'])
+@login_required
 def logout():
-    # remove the username from the session if it's there
-    session.pop('username', None)
+    logout_user()
     return redirect(url_for('index'))
 
 
