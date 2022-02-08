@@ -7,12 +7,19 @@
 
 {% block body %}
 <h1>LOG IN</h1>
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
+    {{ form.username }}
+    {{ form.password }}
+    {{ form.submit }}
+</form>
 <h2>No account? In that case</h2>
 <button class="headbutt">
     <a href="{{ url_for('register')}}">Register</a>
-    <button class="headbutt">
-        <a href="{{ url_for('index')}}">Main</a>
-    </button>
+</button>
+<h2>Or return to</h2>
+<button class="headbutt">
+    <a href="{{ url_for('index')}}">Main</a>
 </button>
 {% endblock %}
 
