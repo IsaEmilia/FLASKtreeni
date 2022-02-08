@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, url_for, request, redirect
+from flask import Flask, redirect, render_template, url_for, request, redirect, LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -64,6 +64,21 @@ def update(id):
 
     else:
         return render_template('update.html', task=task)
+
+
+# code for log-in shenanigans
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    return ''
+
+
+
+#login_manager = LoginManager()
+
+#@login_manager.user_loader
+#def load_user(user_id):
+#    return User.get(user_id)
 
 
 
