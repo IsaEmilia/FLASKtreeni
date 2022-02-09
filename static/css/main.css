@@ -19,8 +19,9 @@
     margin-top: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: blueviolet;
-    background-image: url(images\sunset-g81802ad9e_1920.jpg);
-    background-position: center;
+    background-image: url("images\sunset.jpg");
+    background-repeat: no-repeat;
+    background-color: rgb(215, 247, 247);
     display: flex;
     align-items: center;
     justify-content: center;
