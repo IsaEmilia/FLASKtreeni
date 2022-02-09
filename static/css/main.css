@@ -34,7 +34,7 @@ h2{
 .headbutt{
     align-self: flex-start;
     margin: 20px;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bold;
     border-radius: 60px;
     padding: 0 20fr;
@@ -43,6 +43,10 @@ h2{
     border: 3px solid rgb(30, 168, 189);
     background-color: rgb(228, 255, 255);
     padding: 5px 10px;
+}
+p{
+    color: rgb(160, 0, 192);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .headbutt:hover{

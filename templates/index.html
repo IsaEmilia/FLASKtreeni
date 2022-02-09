@@ -8,8 +8,12 @@
 {% block body %}
 <div class="page">
     <div class="header">
+        <p>Logged in as: {{current_user.username}}</p>
         <button class="headbutt">
-            <a href="{{ url_for('login')}}">Log in</a>
+            <a href="{{url_for('logout')}}">Log Out</a>
+        </button>
+        <button class="headbutt">
+            <a href="{{ url_for('login')}}">Log In</a>
         </button>
         <button class="headbutt">
             <a href="{{ url_for('register')}}">Register</a>
@@ -36,10 +40,10 @@
                         <a href="/delete/{{task.id}}">&#10008;</a>
                         <br>
                         <a href="/update/{{task.id}}">&#10000;</a>
-
                     </td>
-                    <td>{{ task.created_by }}</td>
+                    <td>{{current_user.username}}</td>
                 </tr>
+                
             {% endfor %}
         </table>
         {% endif %}
