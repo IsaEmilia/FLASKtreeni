@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
+from sqlalchemy import ForeignKey
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
@@ -30,8 +31,9 @@ class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
-    #created_by = db.relationship('User', backref='created_by')
-    #completed = db.Column(db.Boolean, default=False)
+    created_by = db.Column(db.String(10),) 
+    completed = db.Column(db.Boolean, default=False)
+    
 
     def __repr__(self):
         return '<Task %r>' % self.id
@@ -40,15 +42,16 @@ class Todo(db.Model):
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
-    password = db.Column(db.String(80), nullable=False)
+    password = db.Column(db.String(80), nullable=False )
 
     def __repr__(self):
         return '<User %r>' % self.id
 
 
+
 class RegisterForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(
-        min=3, max=10,)], render_kw={"placeholder": "username"})
+        min=3, max=10,)], render_kw={"placeholder": "name"})
 
     password = PasswordField(validators=[InputRequired(), Length(
         min=5, max=20)], render_kw={"placeholder": "password"})    
@@ -65,7 +68,7 @@ class RegisterForm(FlaskForm):
 
 class LoginForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(
-        min=3, max=10,)], render_kw={"placeholder": "username"})
+        min=3, max=10,)], render_kw={"placeholder": "name"})
 
     password = PasswordField(validators=[InputRequired(), Length(
         min=5, max=20)], render_kw={"placeholder": "password"})    
@@ -136,6 +139,7 @@ def index():
 
 # code for deleting entries
 @app.route('/delete/<int:id>')
+@login_required
 def delete(id):
     task_to_delete = Todo.query.get_or_404(id)
     try:
@@ -148,6 +152,7 @@ def delete(id):
 
 # code for updating entries
 @app.route('/update/<int:id>', methods=['GET','POST'])
+@login_required
 def update(id):
     task = Todo.query.get_or_404(id)
     if request.method == 'POST':
@@ -160,6 +165,11 @@ def update(id):
 
     else:
         return render_template('update.html', task=task)
+
+#@app.route('/complete/<int:id>', methods=['GET','POST'])
+#def complete(id):
+
+
 
 
 
