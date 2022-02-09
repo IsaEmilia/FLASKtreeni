@@ -16,11 +16,10 @@
     padding: 20px;
 }
 .dashboard{
-    margin-top: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: blueviolet;
-    background-image: url("images\sunset.jpg");
-    background-repeat: no-repeat;
+    background-image: url(/images/sunset.jpg);
+    background-size: cover;
     background-color: rgb(215, 247, 247);
     display: flex;
     align-items: center;
@@ -44,7 +43,22 @@
     background-color: rgb(228, 255, 255);
     padding: 5px 10px;
 }
-
+.dashbutt:hover{
+    background-color: rgb(141, 238, 238);
+}
+button{
+    align-self: center;
+    margin: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 60px;
+    padding: 0 20fr;
+    color: blueviolet;
+    text-align: center;
+    border: 3px solid rgb(30, 168, 189);
+    background-color: rgb(228, 255, 255);
+    padding: 5px 10px;
+}
 .header{
     display: flex;
     flex-direction: row;
@@ -89,10 +103,10 @@ h1{
 
 table{
     padding: 10px;
-    background-color: aquamarine;
+    background-color: rgb(215, 247, 247);
     border: 6px solid palevioletred;
     border-radius: 20px;
-    max-width: 1.5fr;
+    max-width: 600px;
     margin: 20px;
 }
 
