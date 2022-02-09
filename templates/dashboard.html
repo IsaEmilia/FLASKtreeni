@@ -8,6 +8,9 @@
 {% block body %}
 <h1>Congrats! You are a valid user now! ♥ </h1>
 <button class="headbutt">
+    <a href="{{ url_for('index')}}">Main</a>
+</button>
+<button class="headbutt">
     <a href="{{url_for('logout')}}">bye</a>
 </button>
 {% endblock %}

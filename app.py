@@ -19,9 +19,11 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+# Mystinen koodinpätkä joka toimii ja ei toimi vuorotellen
+# Mutta on pakollinen toiminnallisuuden kannalta
 @login_manager.user_loader
-def load_user(id):
-    return User.get(id)
+def load_user(user_id):
+    return User.query.get(user_id)
 
 
 
@@ -77,6 +79,7 @@ def login():
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
                 return redirect(url_for('dashboard'))
+
     return render_template('login.html', form=form)
 
 
