@@ -33,10 +33,10 @@ class Todo(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     created_by = db.Column(db.String(10),) 
     completed = db.Column(db.Boolean, default=False)
-    
 
     def __repr__(self):
         return '<Task %r>' % self.id
+        
 
 # Add users to database
 class User(db.Model, UserMixin):
@@ -168,8 +168,6 @@ def update(id):
 
 #@app.route('/complete/<int:id>', methods=['GET','POST'])
 #def complete(id):
-
-
 
 
 

@@ -6,13 +6,18 @@
 {% endblock %}
 
 {% block body %}
-<div class="content">
-    <h1>Hi {{current_user.username}}! This is your user dashboard! ♥ </h1>
-    <button class="headbutt">
-        <a href="{{ url_for('index')}}">Main</a>
-    </button>
-    <button class="headbutt">
-        <a href="{{url_for('logout')}}">Log Out</a>
-    </button>
+<div class="page">
+    <div class="dashboard">
+        <h1>Hi {{current_user.username}}! This is your user dashboard! ♥ </h1>
+        <h2>There is absolutely nothing here</h2>
+        <h3>Potentially this could show statistics about your chores!</h3>
+        <h4>But I don't know how to do that yet.</h4>
+        <button class="dashbutt">
+            <a href="{{ url_for('index')}}">Main</a>
+        </button>
+        <button class="dashbutt">
+            <a href="{{url_for('logout')}}">Log Out</a>
+        </button>
+    </div>
 </div>
 {% endblock %}
