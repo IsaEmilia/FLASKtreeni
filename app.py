@@ -19,26 +19,32 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-# Mystinen koodinpätkä joka toimii ja ei toimi vuorotellen
-# Mutta on pakollinen toiminnallisuuden kannalta
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
 
-
+# Add entries to database
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    #created_by = db.relationship('User', backref='created_by')
+    #completed = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
         return '<Task %r>' % self.id
 
+# Add users to database
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(80), nullable=False)
+
+    def __repr__(self):
+        return '<User %r>' % self.id
+
 
 class RegisterForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(
@@ -112,6 +118,7 @@ def logout():
 
 # code for adding new entries
 @app.route('/', methods=['POST', 'GET'])
+@login_required
 def index():
     if request.method == 'POST':
         task_content = request.form['content']
