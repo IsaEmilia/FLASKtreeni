@@ -18,6 +18,9 @@
         <button class="headbutt">
             <a href="{{ url_for('register')}}">Register</a>
         </button>
+        <button class="headbutt">
+            <a href="{{ url_for('dashboard')}}">Me</a>
+        </button>
        
     </div>
     <div class="content">
@@ -29,21 +32,21 @@
             <tr>
                 <th>Task</th>
                 <th>Added</th>  
-                <th>Actions</th>
                 <th>User</th>
+                <th>Actions</th>
             </tr>
             {% for task in tasks %}
                 <tr>
                     <td>{{ task.content }}</td>
                     <td>{{ task.date_created.date() }}</td>
+                    <td>{{current_user.username}}</td>
                     <td class="buttons">
                         <a href="/delete/{{task.id}}">&#10008;</a>
                         <br>
                         <a href="/update/{{task.id}}">&#10000;</a>
-                    </td>
-                    <td>{{current_user.username}}</td>
+                    </td>  
                 </tr>
-                
+
             {% endfor %}
         </table>
         {% endif %}
