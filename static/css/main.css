@@ -1,14 +1,26 @@
+:root{
+    --bg-color: rgb(253, 227, 235);
+    --bg-color2: rgb(250, 201, 215);
+    --border: rgb(198, 83, 100);
+}
+*{
+    margin: 0;
+    font-variant: small-caps;
+}
 .page{
-    margin-top: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
+    gap: 0;
     align-items: center;
     justify-items: center;
+    background-color: var(--bg-color);
+    min-height: 100vh;
 }
 .content{
-    margin-top: 0;
+    margin: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: blueviolet;
+    color: rgb(209, 111, 132);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,46 +29,44 @@
 }
 .dashboard{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: blueviolet;
-    background-image: url(/images/sunset.jpg);
-    background-size: cover;
-    background-color: rgb(215, 247, 247);
+    color: rgb(238, 134, 160);
+    background-color: var(--bg-color2);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: 20px;
     border: 5px solid palevioletred;
-    border-radius: 20px;
+    border-radius: 10px;
     max-width: 600px;
     margin-top: 50px;
+    font-size: 14px;
 }
 .dashbutt{
     align-self: center;
     margin: 20px;
     font-size: 20px;
     font-weight: bold;
-    border-radius: 60px;
     padding: 0 20fr;
-    color: blueviolet;
+    color: rgb(209, 111, 132);
     text-align: center;
-    border: 3px solid rgb(30, 168, 189);
-    background-color: rgb(228, 255, 255);
+    border: 3px solid var(--border);
+    border-radius: 10px;
+    background-color: rgb(255, 228, 236);
     padding: 5px 10px;
 }
 .dashbutt:hover{
-    background-color: rgb(141, 238, 238);
+    background-color: #fabbcd;
 }
 button{
     align-self: center;
     margin: 20px;
     font-size: 20px;
-    font-weight: bold;
     border-radius: 60px;
     padding: 0 20fr;
-    color: blueviolet;
+    color: rgb(209, 111, 132);
     text-align: center;
-    border: 3px solid rgb(30, 168, 189);
+    border: 3px solid var(--border);
     background-color: rgb(228, 255, 255);
     padding: 5px 10px;
 }
@@ -64,69 +74,63 @@ button{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    border: 4px solid palevioletred;
-    border-radius: 20px;
-    padding: 20px;
-    background-color: rgb(247, 178, 195);
+    justify-content: space-around;
+    padding-top: 50px;
+    background-color: #fabbcd;
     width: 100%;
     margin-top: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 h2{
-    color: blueviolet;
+    color: rgb(246, 131, 156);
 }
 .headbutt{
-    align-self: flex-start;
-    margin: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 60px;
-    padding: 0 20fr;
-    color: blueviolet;
-    text-align: center;
-    border: 3px solid rgb(30, 168, 189);
-    background-color: rgb(228, 255, 255);
-    padding: 5px 10px;
+    padding: 5px;
+    display: block;
+    padding: 8px;
+    float: left;
 }
-p{
-    color: rgb(160, 0, 192);
+.loggedinas{
+    color: rgb(219, 124, 143);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    float: left;
 }
 
-.headbutt:hover{
-    background-color: rgb(141, 238, 238);
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
 }
-
-h1{
-    margin-bottom: 0;
+li {
+    display: inline;
+    background-color: #fabbcd;
 }
-
 table{
-    padding: 10px;
-    background-color: rgb(215, 247, 247);
-    border: 6px solid palevioletred;
-    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0;
+    background-color: rgb(247, 215, 227);
+    border: 4px solid var(--border);
     max-width: 600px;
-    margin: 20px;
 }
 
 th{
     font-size: large;
     padding: 10px;
-    border-bottom: 2px dashed royalblue;
-    color: rgb(85, 49, 119);
-}
-
-tr{
-    padding: auto;
-    border-bottom: 1px solid royalblue;
+    color: rgb(209, 111, 132);
 }
 
 td{
-    padding: 10px;
-}
+    padding: 4px 10px;
 
+}
+tr:nth-child(even) {
+    background-color: #ffeef1;
+}
+td.buttons{
+    display: flex;
+}
 .buttons{
     font-size: larger;
     font-weight: bold;
@@ -140,36 +144,49 @@ td{
 }
 
 input[type=button], input[type=submit]{
-    padding: 0 6px;
-    border-radius: 60px;
-    font-size: 28px;
-    font-weight: bolder;
-    background-color: rgb(255, 122, 188);
-    border: 3px solid rgb(235, 50, 142);
-    color: rgb(255, 212, 237);
-    margin-top: 10px;
+    padding:5px;
+    padding-bottom: 8px;
+    color: rgb(222, 119, 146);
+    border: 3px solid var(--border);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgb(255, 231, 237);
 }
 input[type=button], input[type=submit]:hover{
-    background-color: rgb(146, 0, 85);
-    border-radius: 60px;
-    border: 3px solid rgb(63, 0, 31);
+    background-color: rgb(255, 184, 195);
+
 }
 input[name=content]{
-    border: 3px solid rgb(248, 81, 137);
+    border: 3px solid rgb(198, 83, 100);
     border-radius: 10px;
-    height: 30px;
+    height: 27px;
     max-width: 300px;
     min-width: 200px;
     text-decoration: none;
     margin: auto;
     padding: 5px;
-    background-color: rgb(250, 215, 231);
+    background-color: rgb(254, 237, 241);
 }
 
 a{
     text-decoration: none;
-    color: rgb(185, 6, 155);
+    color: rgb(199, 83, 93);
 }
 a:hover{
-    color: black;
+    color: rgb(24, 23, 23);
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5rem;  
+    background-color: #817878;
+    color: rgb(255, 231, 237);
+    position: absolute;
+    margin: 0;
+}
+p{
+    padding: 10px;
 }

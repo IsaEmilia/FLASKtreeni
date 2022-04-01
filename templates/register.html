@@ -14,14 +14,10 @@
         {{ form.password }}
         {{ form.submit }}
     </form>
-    <h2>Have an account? What are you doing here??</h2>
-    <button >
-        <a href="{{ url_for('login')}}">Log in</a>
-    </button>
+    <h2>Already have an account?</h2>
+    <a href="{{ url_for('register')}}">Register</a>
     <h2>Or return to</h2>
-    <button >
-        <a href="{{ url_for('index')}}">To do list</a>
-    </button>
+    <a href="{{ url_for('index')}}"> todo list</a>
 </div>
 {% endblock %}
 

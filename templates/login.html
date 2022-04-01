@@ -15,13 +15,11 @@
         {{ form.submit }}
     </form>
     <h2>No account? In that case</h2>
-    <button >
-        <a href="{{ url_for('register')}}">Register</a>
-    </button>
+    <a href="{{ url_for('register')}}">Register</a>
     <h2>Or return to</h2>
-    <button >
-        <a href="{{ url_for('index')}}">To do list</a>
-    </button>
+    <a href="{{ url_for('index')}}"> todo list</a>
+
+    <p>You need to be registered and logged in to view todo lists</p>
 </div>
 {% endblock %}
 

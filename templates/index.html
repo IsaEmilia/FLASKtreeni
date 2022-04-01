@@ -8,25 +8,18 @@
 {% block body %}
 <div class="page">
     <div class="header">
-        <p>Logged in as: {{current_user.username}}</p>
-        <button class="headbutt">
-            <a href="{{url_for('logout')}}">Log Out</a>
-        </button>
-        <button class="headbutt">
-            <a href="{{ url_for('login')}}">Log In</a>
-        </button>
-        <button class="headbutt">
-            <a href="{{ url_for('register')}}">Register</a>
-        </button>
-        <button class="headbutt">
-            <a href="{{ url_for('dashboard')}}">Dashboard</a>
-        </button>
-       
+        <p class="loggedinas">Logged in as: {{current_user.username}}</p>
+            <ul>
+                <li><a class="headbutt" href="{{url_for('logout')}}"> Log Out </a></li>
+                <li><a class="headbutt" href="{{ url_for('login')}}">Log In</a></li>
+                <li><a class="headbutt" href="{{ url_for('register')}}">Register</a></li>
+                <li> <a class="headbutt" href="{{ url_for('dashboard')}}">Dashboard</a></li>
+            </ul>
     </div>
     <div class="content">
         <h1>To Do</h1>
         {% if tasks|length < 1 %}
-        <h4>*crickets*</h4>
+        <h4>Add a note to dispaly on todo table</h4>
         {% else %}
         {% if tasks.completed %}
         {% endif %}
@@ -35,21 +28,15 @@
             <tr>
                 <th>Task</th>
                 <th>Added</th>  
-                <th>User</th>
-                <th>Done</th>
                 <th>Actions</th>
             </tr>
             {% for task in tasks %}
                 <tr>
                     <td>{{ task.content }}</td>
                     <td>{{ task.date_created.date() }}</td>
-                    <td>{{task.created_by}}</td>
-                    <td>{{task.completed}}</td>
                     <td class="buttons">
                         <a href="/delete/{{task.id}}">&#10008;</a>
-                        <br>
                         <a href="/update/{{task.id}}">&#10000;</a>
-                        <br>
                         <a href="">&#10004;</a>
                     </td>  
                 </tr>
@@ -60,10 +47,14 @@
         <br>
         <div class="form">
             <form action="/"method="POST">
-                <input type="text" name="content" id="content">
-                <input id="submit" type="submit" value="&#10004;">
+                <input type="text" name="content" id="content" required>
+                <input id="submit" type="submit" value="add">
             </form>
         </div>
+
+        <footer>
+           <p> footer </p>
+        </footer>
 </div>
 
 
