@@ -20,14 +20,15 @@
         <h1>To Do</h1>
         {% if tasks|length < 1 %}
         <h4>Add a note to dispaly on todo table</h4>
+
         {% else %}
         {% if tasks.completed %}
         {% endif %}
 
         <table>
             <tr>
-                <th>Task</th>
-                <th>Added</th>  
+                <th class="stylechange">Task</th>
+                <th class="stylechange">Added</th>  
                 <th>Actions</th>
             </tr>
             {% for task in tasks %}
@@ -37,7 +38,6 @@
                     <td class="buttons">
                         <a href="/delete/{{task.id}}">&#10008;</a>
                         <a href="/update/{{task.id}}">&#10000;</a>
-                        <a href="">&#10004;</a>
                     </td>  
                 </tr>
 

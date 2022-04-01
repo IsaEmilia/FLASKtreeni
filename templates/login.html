@@ -8,7 +8,8 @@
 {% block body %}
 <div class="page">
     <h1>LOG IN</h1>
-    <form method="POST" action="">
+    <br>
+    <form  method="POST" action="">
         {{ form.hidden_tag() }}
         {{ form.username }}
         {{ form.password }}
@@ -19,7 +20,7 @@
     <h2>Or return to</h2>
     <a href="{{ url_for('index')}}"> todo list</a>
 
-    <p>You need to be registered and logged in to view todo lists</p>
+    <p style="color:rgb(246, 131, 156)">You need to be registered and logged in to view todo lists</p>
 </div>
 {% endblock %}
 
