@@ -7,9 +7,9 @@ from sqlalchemy import ForeignKey
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
+# ^ All the needed imports ^
 
-
-
+# Initiate imports
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
@@ -26,7 +26,7 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 
-# Add entries to database
+# Create todo databse
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
@@ -38,7 +38,7 @@ class Todo(db.Model):
         return '<Task %r>' % self.id
         
 
-# Add users to database
+# Create users database
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
@@ -47,8 +47,7 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return '<User %r>' % self.id
 
-
-
+# Register and log-in forms
 class RegisterForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(
         min=3, max=10,)], render_kw={"placeholder": "name"})
@@ -75,10 +74,7 @@ class LoginForm(FlaskForm):
 
     submit = SubmitField("Login")
  
-
-
-# login routing and form shenanigans
-
+# Login routing and user validation
 @app.route('/login', methods=['GET','POST'])
 def login():
     form = LoginForm()
@@ -91,7 +87,7 @@ def login():
 
     return render_template('login.html', form=form)
 
-
+# Register routing, user validation and password crypting
 @app.route('/register', methods=['GET','POST'])
 def register():
     form = RegisterForm()
@@ -104,7 +100,7 @@ def register():
 
     return render_template('register.html', form=form)
 
-
+# Dashboard and log-in routing, both require user to be logged in
 @app.route('/dashboard', methods=['GET','POST'])
 @login_required
 def dashboard():
@@ -119,7 +115,7 @@ def logout():
 
 
 
-# code for adding new entries
+# Code for adding new entries
 @app.route('/', methods=['POST', 'GET'])
 @login_required
 def index():
@@ -138,7 +134,7 @@ def index():
         return render_template('index.html', tasks=tasks)
 
 
-# code for deleting entries
+# Code for deleting entries
 @app.route('/delete/<int:id>')
 @login_required
 def delete(id):
@@ -151,7 +147,7 @@ def delete(id):
         return 'Opps, that went wrong :c'
 
 
-# code for updating entries
+# Code for updating entries
 @app.route('/update/<int:id>', methods=['GET','POST'])
 @login_required
 def update(id):
@@ -166,10 +162,6 @@ def update(id):
 
     else:
         return render_template('update.html', task=task)
-
-#@app.route('/complete/<int:id>', methods=['GET','POST'])
-#def complete(id):
-
 
 
 if __name__ == '__main__':

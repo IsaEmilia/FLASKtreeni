@@ -2,6 +2,7 @@
     --bg-color: rgb(253, 227, 235);
     --bg-color2: rgb(250, 201, 215);
     --border: rgb(198, 83, 100);
+    --text: rgb(222, 119, 146);
 }
 *{
     margin: 0;
@@ -18,6 +19,12 @@
     background-color: var(--bg-color);
     min-height: 100vh;
 }
+#loginpage{
+    padding-top: 100px;
+}
+#registerpage{
+    padding-top: 100px;
+}
 .content{
     margin: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -28,7 +35,6 @@
     flex-direction: column;
     padding: 20px;
 }
-
 .dashboard{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: rgb(238, 134, 160);
@@ -43,6 +49,13 @@
     max-width: 600px;
     margin-top: 50px;
     font-size: 14px;
+}
+#dash-goto-main{
+    margin-top: 50px;
+}
+#dash-logout{
+    margin-top: 50px;
+    font-weight: bold;
 }
 .dashbutt{
     align-self: center;
@@ -59,18 +72,6 @@
 }
 .dashbutt:hover{
     background-color: #fabbcd;
-}
-button{
-    align-self: center;
-    margin: 20px;
-    font-size: 20px;
-    border-radius: 60px;
-    padding: 0 20fr;
-    color: rgb(209, 111, 132);
-    text-align: center;
-    border: 3px solid var(--border);
-    background-color: rgb(228, 255, 255);
-    padding: 5px 10px;
 }
 .header{
     display: flex;
@@ -97,12 +98,10 @@ h2{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     float: left;
 }
-
 ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
-    
+    padding: 0;   
 }
 li {
     display: inline;
@@ -117,16 +116,13 @@ table{
     max-width: 600px;
     margin-top: 20px;
 }
-
 th{
     font-size: large;
     padding: 10px;
     color: rgb(209, 111, 132);
 }
-
 td{
     padding: 4px 10px;
-
 }
 tr:nth-child(even) {
     background-color: #ffeef1;
@@ -145,16 +141,15 @@ td.buttons{
     flex-direction: row;
     margin: 10px;
 }
-
 input[type=button], input[type=submit]{
-    padding:5px;
     padding-bottom: 8px;
-    color: rgb(222, 119, 146);
+    padding: 5px;
+    color: var(--text);
     border: 3px solid var(--border);
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
-    background-color: rgb(255, 231, 237);
+    background-color: var(--bg-color2);
 }
 input[type=button], input[type=submit]:hover{
     background-color: rgb(255, 184, 195);
@@ -171,16 +166,6 @@ input[name=content]{
     padding: 5px;
     background-color: rgb(254, 237, 241);
 }
-input[type="submit"] {
-    padding:5px;
-    padding-bottom: 8px;
-    color: rgb(222, 119, 146);
-    border: 3px solid var(--border);
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    background-color: rgb(255, 173, 193);
-}
 a{
     text-decoration: none;
     color: rgb(199, 83, 93);
@@ -188,7 +173,6 @@ a{
 a:hover{
     color: rgb(24, 23, 23);
 }
-
 footer{
     position: absolute;
     bottom: 0;

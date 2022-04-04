@@ -12,8 +12,8 @@
         <h2>There is absolutely nothing here</h2>
         <h3>Potentially this could show statistics about your chores!</h3>
         <h4>But I don't know how to do that yet.</h4>
-        <a class="dashbutt" href="{{ url_for('index')}}">To do list</a>
-        <a class="dashbutt" href="{{url_for('logout')}}">Log Out</a>
+        <a id="dash-goto-main" class="dashbutt" href="{{ url_for('index')}}">To do list</a>
+        <a id="dash-logout" href="{{url_for('logout')}}">Log Out</a>
     </div>
 </div>
 {% endblock %}

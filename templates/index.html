@@ -7,18 +7,16 @@
 
 {% block body %}
 <div class="page">
-    <div class="header">
+    <div class="header"> <!--Header where current user and dashboard / log out buttons are displayed-->
         <p class="loggedinas">Logged in as: {{current_user.username}}</p>
             <ul>
                 <li><a class="headbutt" href="{{url_for('logout')}}"> Log Out </a></li>
-                <li><a class="headbutt" href="{{ url_for('login')}}">Log In</a></li>
-                <li><a class="headbutt" href="{{ url_for('register')}}">Register</a></li>
                 <li> <a class="headbutt" href="{{ url_for('dashboard')}}">Dashboard</a></li>
             </ul>
     </div>
     <div class="content">
         <h1>To Do</h1>
-        {% if tasks|length < 1 %}
+        {% if tasks|length < 1 %} <!--show the message below if there is no tasks / todo list-->
         <h4>Add a note to dispaly on todo table</h4>
 
         {% else %}
@@ -27,11 +25,11 @@
 
         <table>
             <tr>
-                <th class="stylechange">Task</th>
-                <th class="stylechange">Added</th>  
+                <th>Task</th>
+                <th>Added</th>  
                 <th>Actions</th>
             </tr>
-            {% for task in tasks %}
+            {% for task in tasks %} <!--Get tasks from database and display them in a table-->
                 <tr>
                     <td>{{ task.content }}</td>
                     <td>{{ task.date_created.date() }}</td>
@@ -45,10 +43,10 @@
         </table>
         {% endif %}
         <br>
-        <div class="form">
+        <div class="form"> <!--Form for adding new tasks, empty entries are not allowed-->
             <form action="/"method="POST">
                 <input type="text" name="content" id="content" required>
-                <input id="submit" type="submit" value="add">
+                <input id="submit" type="submit" value="&#10148;">
             </form>
         </div>
 

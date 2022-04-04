@@ -6,16 +6,16 @@
 {% endblock %}
 
 {% block body %}
-<div class="page">
+<div id="registerpage" class="page">
     <h1>REGISTER</h1>
     <form method="POST" action="">
-        {{ form.hidden_tag() }}
+        {{ form.hidden_tag() }} <!--Flask magic to protect the form against CSRF attacks-->
         {{ form.username }}
         {{ form.password }}
         {{ form.submit }}
     </form>
     <h2>Already have an account?</h2>
-    <a href="{{ url_for('register')}}">Register</a>
+    <a href="{{ url_for('login')}}">Log in</a>
     <h2>Or return to</h2>
     <a href="{{ url_for('index')}}"> todo list</a>
 </div>

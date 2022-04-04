@@ -6,11 +6,11 @@
 {% endblock %}
 
 {% block body %}
-<div class="page">
+<div class="page" id="loginpage">
     <h1>LOG IN</h1>
     <br>
     <form  method="POST" action="">
-        {{ form.hidden_tag() }}
+        {{ form.hidden_tag() }} <!--Flask magic to protect the form against CSRF attacks-->
         {{ form.username }}
         {{ form.password }}
         {{ form.submit }}
