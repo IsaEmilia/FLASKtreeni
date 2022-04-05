@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
-from sqlalchemy import ForeignKey
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
@@ -122,7 +121,6 @@ def index():
     if request.method == 'POST':
         task_content = request.form['content']
         new_task = Todo(content=task_content) 
-        #task_content != '' 
         try:
             db.session.add(new_task)
             db.session.commit()
